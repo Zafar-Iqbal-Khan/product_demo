@@ -94,13 +94,6 @@ class MyHomePage extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return InkWell(
                   onTap: () {
-                    //    Get.to(
-                    //     ProductDetails(
-                    //       title: results[index].name,
-                    //       mrp: results[index].mrp.toString(),
-                    //       imgUrl: results[index].gallery!.mediumThumbnailLink,
-                    //     ),
-                    //   );
                     Navigator.push(
                       context,
                       MaterialPageRoute(

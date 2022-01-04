@@ -55,8 +55,4 @@ class Gallery {
   factory Gallery.fromJson(Map<String, dynamic> json) => Gallery(
         mediumThumbnailLink: json["medium_thumbnail_link"],
       );
-
-  Map<String, dynamic> toJson() => {
-        "medium_thumbnail_link": mediumThumbnailLink,
-      };
 }
