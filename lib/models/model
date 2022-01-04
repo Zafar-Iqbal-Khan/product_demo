@@ -31,22 +31,16 @@ class Result {
   Result({
     this.name,
     this.mrp,
-    this.rate,
     this.gallery,
   });
 
   String? name;
-
   int? mrp;
-
-  List<Rate>? rate;
-
   Gallery? gallery;
 
   factory Result.fromJson(Map<String, dynamic> json) => Result(
         name: json["name"],
         mrp: json["mrp"],
-        rate: List<Rate>.from(json["rate"].map((x) => Rate.fromJson(x))),
         gallery: Gallery.fromJson(json["gallery"]),
       );
 }
@@ -60,20 +54,5 @@ class Gallery {
 
   factory Gallery.fromJson(Map<String, dynamic> json) => Gallery(
         mediumThumbnailLink: json["medium_thumbnail_link"],
-      );
-}
-
-class Rate {
-  Rate({
-    this.rate,
-    this.discountPercent,
-  });
-
-  int? rate;
-  double? discountPercent;
-
-  factory Rate.fromJson(Map<String, dynamic> json) => Rate(
-        rate: json["rate"],
-        discountPercent: json["discount_percent"].toDouble(),
       );
 }

@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductDetails extends StatelessWidget {
   String? title;
   String? imgUrl;
   String? mrp;
+  int? rate;
+  double? discount;
 
-  ProductDetails({this.mrp, this.imgUrl, this.title});
+  ProductDetails({
+    this.mrp,
+    this.imgUrl,
+    this.title,
+    this.rate,
+    this.discount,
+  });
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +50,7 @@ class ProductDetails extends StatelessWidget {
                   TextSpan(
                     children: [
                       const TextSpan(
-                        text: 'MRP :  ',
+                        text: 'Rate :  ',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 22,
@@ -56,8 +65,86 @@ class ProductDetails extends StatelessWidget {
                           fontSize: 18,
                         ),
                       ),
+                      const TextSpan(
+                        text: "Discount:  ",
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "${discount.toString()}%",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          wordSpacing: 4.0,
+                          letterSpacing: 1.0,
+                          fontSize: 18,
+                        ),
+                      ),
                     ],
                   ),
+                ),
+                const SizedBox(height: 20),
+                Text.rich(
+                  TextSpan(
+                    children: [
+                      const TextSpan(
+                        text: 'Price :  ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22,
+                        ),
+                      ),
+                      TextSpan(
+                        text: "₹$rate ",
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w400,
+                          wordSpacing: 4.0,
+                          letterSpacing: 1.0,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  height: 60,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    InkWell(
+                      onTap: () {},
+                      child: const Chip(
+                        backgroundColor: Colors.red,
+                        elevation: 4.0,
+                        label: Text(
+                          'Buy Now',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      onTap: () {},
+                      child: const Chip(
+                        avatar: CircleAvatar(
+                          child: Icon(Icons.shopping_cart),
+                        ),
+                        backgroundColor: Colors.blue,
+                        elevation: 4.0,
+                        label: Text(
+                          'add to cart',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 )
               ],
             ),

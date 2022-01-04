@@ -101,6 +101,8 @@ class MyHomePage extends StatelessWidget {
                           title: results[index].name,
                           mrp: results[index].mrp.toString(),
                           imgUrl: results[index].gallery!.mediumThumbnailLink,
+                          rate: results[index].rate![0].rate,
+                          discount: results[index].rate![0].discountPercent,
                         ),
                       ),
                     );
