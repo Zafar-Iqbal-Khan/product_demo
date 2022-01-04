@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 class ProductDetails extends StatelessWidget {
   String? title;
   String? imgUrl;
-  String? desc;
+  String? mrp;
 
-  ProductDetails({this.desc, this.imgUrl, this.title});
+  ProductDetails({this.mrp, this.imgUrl, this.title});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,14 +41,14 @@ class ProductDetails extends StatelessWidget {
                   TextSpan(
                     children: [
                       const TextSpan(
-                        text: 'Description :  ',
+                        text: 'MRP :  ',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 22,
                         ),
                       ),
                       TextSpan(
-                        text: "$desc ",
+                        text: "₹$mrp ",
                         style: const TextStyle(
                           fontWeight: FontWeight.w400,
                           wordSpacing: 4.0,
