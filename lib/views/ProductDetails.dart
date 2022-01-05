@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:product_demo/models/prod_model.dart';
 
 class ProductDetails extends StatelessWidget {
   String? title;

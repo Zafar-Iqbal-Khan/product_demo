@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart';
 import 'package:product_demo/controller/controller.dart';
+import 'package:product_demo/models/mycart_model.dart';
 import 'package:product_demo/models/prod_model.dart';
 import 'package:product_demo/models/product_model.dart';
 import 'package:product_demo/views/ProductDetails.dart';
+import 'package:product_demo/views/myCart.dart';
 
 class MyHomePage extends StatelessWidget {
   // final List<ProductModel> _products = [
@@ -81,9 +83,24 @@ class MyHomePage extends StatelessWidget {
   // ];
   // @override
   Controller controller = Get.put(Controller());
-
+  List<CartModel>? cartProducts = [];
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => MyCart(
+                            cart: cartProducts,
+                          )));
+            },
+            icon: const Icon(Icons.shopping_cart),
+          )
+        ],
+      ),
       body: FutureBuilder(
         future: controller.products,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -157,7 +174,27 @@ class MyHomePage extends StatelessWidget {
                                     style: const TextStyle(fontSize: 20),
                                     maxLines: 3,
                                     overflow: TextOverflow.ellipsis,
-                                  )
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  IconButton(
+                                      onPressed: () {
+                                        cartProducts!.add(
+                                          CartModel(
+                                            name: results[index].name,
+                                            imgUrl: results[index]
+                                                .gallery!
+                                                .mediumThumbnailLink,
+                                            price:
+                                                results[index].mrp.toString(),
+                                          ),
+                                        );
+                                        print(cartProducts!.length);
+                                      },
+                                      icon: const Icon(
+                                        Icons.shopping_cart,
+                                      ))
                                 ],
                               ),
                             ),
